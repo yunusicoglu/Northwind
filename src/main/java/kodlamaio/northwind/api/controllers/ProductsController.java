@@ -13,10 +13,9 @@ import kodlamaio.northwind.entities.concretes.Product;
 @RequestMapping("/api/products")
 public class ProductsController {
 	
-	private ProductService productService;
+	ProductService productService;
 	
 	public ProductsController(ProductService productService) {
-		super();
 		this.productService = productService;
 	}
 
