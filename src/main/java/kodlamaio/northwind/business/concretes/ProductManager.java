@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.northwind.business.abstracts.ProductService;
+import kodlamaio.northwind.core.utilities.results.DataResult;
+import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
 
@@ -20,7 +22,6 @@ public class ProductManager implements ProductService{
 
 	@Override
 	public List<Product> getAll() {
-		// TODO Auto-generated method stub
 		return this.productDao.findAll();
 	}
 	
