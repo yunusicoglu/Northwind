@@ -17,7 +17,7 @@ public class Result {
 		return success;
 	}
 
-	public String getMassage() {
+	public String getMessage() {
 		return message;
 	}
 	
