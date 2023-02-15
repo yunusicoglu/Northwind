@@ -75,6 +75,8 @@ public class ProductManager implements ProductService{
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(pageable).getContent(), "Sayfalama başarılı!");	}
 	
+	//deneme
+	
 	
 
 }
