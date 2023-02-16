@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.northwind.business.abstracts.ProductService;
@@ -42,13 +43,13 @@ public class ProductManager implements ProductService{
 
 	@Override
 	public DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId) {
-		return new SuccessDataResult<List<Product>>(this.productDao.getByProductNameOrCategory(productName, categoryId), "Ürünler Listelendi.");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByProductNameOrCategory_CategoryId(productName, categoryId), "Ürünler Listelendi.");
 	}
 
 
 	@Override
 	public DataResult<List<Product>> getByCategoryIdIn(List<Integer> categories) {
-		return new SuccessDataResult<List<Product>>(this.productDao.getByCategoryIn(categories), "Ürünler Listelendi.");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByCategory_CategoryIdIn(categories), "Ürünler Listelendi.");
 	}
 
 
@@ -74,6 +75,14 @@ public class ProductManager implements ProductService{
 	public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(pageable).getContent(), "Sayfalama başarılı!");	}
+
+
+	@Override
+	public DataResult<List<Product>> getAllSorted() {
+		Sort sort = Sort.by(Sort.Direction.ASC, "productName");
+		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort), "Sıralama başarılı!");	
+
+	}
 	
 	
 

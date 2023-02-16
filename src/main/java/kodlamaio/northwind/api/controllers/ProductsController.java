@@ -21,28 +21,55 @@ public class ProductsController {
 		this.productService = productService;
 	}
 
-	@GetMapping("getall")
+	@GetMapping("getAll") //postman ornek : http://localhost:8080/api/products/getAll
 	public DataResult<List<Product>> getAll(){
 		return productService.getAll();
 	}
 	
-	@GetMapping("getByProductName")
+	@GetMapping("getByProductName") //postman ornek : http://localhost:8080/api/products/getByProductName?productName=Chai
 	public DataResult<Product> getByProductName(@RequestParam String productName){
 		return this.productService.getByProductName(productName);
 	}
 	
-	@GetMapping("getByProductNameAndCategoryId")
+	@GetMapping("getByProductNameAndCategoryId") //postman ornek : http://localhost:8080/api/products/getByProductNameAndCategoryId?productName=Chai&categoryId=1
 	public DataResult<Product> getByProductNameAndCategoryId(@RequestParam String productName, @RequestParam int categoryId){
 		return this.productService.getByProductNameAndCategoryId(productName, categoryId);
 	}
 	
-	@GetMapping("getByProductNameContains")
+	@GetMapping("getByProductNameContains") //postman ornek : http://localhost:8080/api/products/getByProductNameContains?productName=ba
 	public DataResult<List<Product>> getByProductNameContains(@RequestParam String productName){
 		return this.productService.getByProductNameContains(productName);
 	}
 	
-	@GetMapping("getAllByPage")
+	@GetMapping("getAllByPage") //postman ornek : http://localhost:8080/api/products/getAllByPage?pageNo=1&pageSize=10
 	public DataResult<List<Product>> getAll(int pageNo, int pageSize){
 		return this.productService.getAll(pageNo, pageSize);
 	}
+	
+	@GetMapping("getAllAsc") //postman ornek : http://localhost:8080/api/products/getAllAsc
+	public DataResult<List<Product>> getAllSorted(){
+		return this.productService.getAllSorted();
+	}
+	
+	@GetMapping("getByProductNameOrCategoryId") //postman ornek : http://localhost:8080/api/products/getByProductNameOrCategoryId?productName=Chai&categoryId=2
+	public DataResult<List<Product>> getByProductNameOrCategoryId(@RequestParam String productName, @RequestParam int categoryId){
+		return this.productService.getByProductNameOrCategoryId(productName, categoryId);
+	}
+	
+	@GetMapping("getByCategoryIdIn") //postman ornek : http://localhost:8080/api/products/getByCategoryIdIn?categories=1,2
+	public DataResult<List<Product>> getByCategoryIdIn(@RequestParam List<Integer> categories){
+		return this.productService.getByCategoryIdIn(categories);
+	}
+	
+	@GetMapping("getByProductNameStartsWith") //postman ornek : http://localhost:8080/api/products/getByProductNameStartsWith?productName=Ch
+	public DataResult<List<Product>> getByProductNameStartsWith(@RequestParam String productName){
+		return this.productService.getByProductNameStartsWith(productName);
+	}
+	
+	@GetMapping("getByNameAndCategory") //postman ornek : http://localhost:8080/api/products/getByNameAndCategory?productName=Chai&categoryId=2
+	public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName, @RequestParam int categoryId){
+		return this.productService.getByNameAndCategory(productName, categoryId);
+	}
 }
+
+
